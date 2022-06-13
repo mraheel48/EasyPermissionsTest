@@ -1,12 +1,10 @@
 package com.example.easypermissionstest
 
 import android.Manifest
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
@@ -14,7 +12,7 @@ import pub.devrel.easypermissions.EasyPermissions
 
 class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
 
-    lateinit var button: Button
+    private lateinit var button: Button
 
     private val permissionsPerms = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
         arrayOf(
@@ -71,10 +69,4 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == AppSettingsDialog.DEFAULT_SETTINGS_REQ_CODE) {
-            Log.d("myPermission", "request to Camera")
-        }
-    }
 }
